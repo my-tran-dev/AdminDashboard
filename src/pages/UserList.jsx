@@ -1,51 +1,185 @@
 import styled from "styled-components";
 import { DataGrid } from "@material-ui/data-grid";
+import { IconButton, makeStyles } from "@material-ui/core";
+import { DeleteOutline, EditOutlined } from "@material-ui/icons";
+//import { userRows } from "../../dummyData";
+import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const Container = styled.div`
   flex: 5;
 `;
 
-const UserList = () => {
-  const columns = [
-    { field: 'id', headerName: 'ID', width: 70 },
-    { field: 'firstName', headerName: 'First name', width: 130 },
-    { field: 'lastName', headerName: 'Last name', width: 130 },
+const sUser = {
+  display: "flex",
+  alignItems: "center",
+};
+
+const sImg = {
+  width: "32px",
+  height: "32px",
+  borderRadius: "50%",
+  objectFit: "cover",
+  marginRight: "10px",
+};
+
+const sLink = {
+  display: "flex",
+  alignItems: "center",
+  textDecoration: "none",
+  color: "#555",
+};
+
+const sPos = {
+  "&:hover": {
+    backgroundColor: "#e5faf2",
+    color: "#3bb077",
+  },
+};
+
+const sNeg = {
+  backgroundColor: "#fff0f1",
+  color: "#d95087",
+  "&:hover": {
+    backgroundColor: "#000000",
+  },
+};
+
+const StyledDataGrid = styled(DataGrid)(({ theme }) => ({
+  "& .MuiDataGrid-cell, .MuiDataGrid-cell:focus, .MuiDataGrid-cell:focus-within, *:focus":
     {
-      field: 'age',
-      headerName: 'Age',
-      type: 'number',
-      width: 90,
+      outline: 0,
+    },
+}));
+
+const useStyles = makeStyles((theme) => ({
+  sPos: {
+    "&:hover": {
+      backgroundColor: "#e5faf2",
+      color: "#3bb077",
+      transition: "all 0.3s ease",
+      transform: "scale(1.1)"
+    },
+  },
+  sNeg: {
+    "&:hover": {
+      backgroundColor: "#fff0f1",
+      color: "#d95087",
+      transition: "all 0.3s ease",
+      transform: "scale(1.1)"
+    },
+  },
+}));
+
+const UserList = () => {
+  const classes = useStyles();
+
+  const columns = [
+    { field: "id", headerName: "ID", width: 90 },
+    {
+      field: "user",
+      headerName: "User",
+      width: 200,
+      renderCell: (params) => {
+        return (
+          <div style={sUser}>
+            <img style={sImg} src={params.row.avatar} alt="" />
+            {params.row.username}
+          </div>
+        );
+      },
     },
     {
-      field: 'fullName',
-      headerName: 'Full name',
-      description: 'This column has a value getter and is not sortable.',
-      sortable: false,
+      field: "email",
+      headerName: "Email",
+      width: 250,
+    },
+    {
+      field: "status",
+      headerName: "Status",
+      width: 120,
+    },
+    {
+      field: "transaction",
+      headerName: "Transaction Volume",
       width: 160,
+    },
+    {
+      field: "action",
+      headerName: "Action",
+      width: 120,
+      renderCell: (params) => {
+        return (
+          <>
+            <IconButton className={classes.sPos}>
+              <Link to={"/user/" + params.row.id} style={sLink}>
+                <EditOutlined />
+              </Link>
+            </IconButton>
+            <IconButton className={classes.sNeg}>
+              <DeleteOutline />
+            </IconButton>
+          </>
+        );
+      },
+    },
+  ];
+
+  const rows = [
+    {
+      id: 1,
+      username: "Jack",
+      avatar: "male1.png",
+      email: "jack@gmail.com",
+      status: "active",
+      transaction: "50.00€",
+    },
+    {
+      id: 2,
+      username: "Jack",
+      avatar: "male1.png",
+      email: "jack@gmail.com",
+      status: "active",
+      transaction: "50.00€",
+    },
+    {
+      id: 3,
+      username: "Jack",
+      avatar: "male1.png",
+      email: "jack@gmail.com",
+      status: "active",
+      transaction: "50.00€",
+    },
+    {
+      id: 4,
+      username: "Jack",
+      avatar: "male1.png",
+      email: "jack@gmail.com",
+      status: "active",
+      transaction: "50.00€",
+    },
+    {
+      id: 5,
+      username: "Jack",
+      avatar: "male1.png",
+      email: "jack@gmail.com",
+      status: "active",
+      transaction: "50.00€",
     },
   ];
   
-  const rows = [
-    { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35 },
-    { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
-    { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
-    { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
-    { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
-    { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
-    { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
-    { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
-    { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
-  ];
-
-  return <Container>
-    <DataGrid
+  return (
+    <Container>
+      <StyledDataGrid
         rows={rows}
         columns={columns}
         pageSize={5}
         rowsPerPageOptions={[5]}
         checkboxSelection
+        disableSelectionOnClick
       />
-  </Container>;
+    </Container>
+  );
 };
 
 export default UserList;
