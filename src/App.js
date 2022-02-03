@@ -9,6 +9,7 @@ import {
   Redirect,
 } from "react-router-dom";
 import UserList from "./pages/UserList";
+import User from "./pages/User";
 
 const Container = styled.div`
   display: flex;
@@ -26,6 +27,9 @@ function App() {
           </Route>
           <Route path="/users">
             <UserList />
+          </Route>
+          <Route path="/user/:userId">
+            <User />
           </Route>
         </Switch>
       </Container>

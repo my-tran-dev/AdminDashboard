@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { DataGrid } from "@material-ui/data-grid";
 import { IconButton, makeStyles } from "@material-ui/core";
 import { DeleteOutline, EditOutlined } from "@material-ui/icons";
-//import { userRows } from "../../dummyData";
+import { userRows } from "../dummyData";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
@@ -74,12 +74,18 @@ const useStyles = makeStyles((theme) => ({
 const UserList = () => {
   const classes = useStyles();
 
+  const [data, setData] = useState(userRows);
+
+  const handleDelete = (id) => {
+    setData(data.filter(item => item.id !== id));
+  };
+
   const columns = [
-    { field: "id", headerName: "ID", width: 90 },
+    { field: "id", headerName: "ID", width: 120 },
     {
       field: "user",
       headerName: "User",
-      width: 200,
+      width: 300,
       renderCell: (params) => {
         return (
           <div style={sUser}>
@@ -92,17 +98,17 @@ const UserList = () => {
     {
       field: "email",
       headerName: "Email",
-      width: 250,
+      width: 300,
     },
     {
       field: "status",
       headerName: "Status",
-      width: 120,
+      width: 150,
     },
     {
       field: "transaction",
       headerName: "Transaction Volume",
-      width: 160,
+      width: 200,
     },
     {
       field: "action",
@@ -117,7 +123,7 @@ const UserList = () => {
               </Link>
             </IconButton>
             <IconButton className={classes.sNeg}>
-              <DeleteOutline />
+              <DeleteOutline onClick={() => handleDelete(params.row.id)} />
             </IconButton>
           </>
         );
@@ -125,56 +131,13 @@ const UserList = () => {
     },
   ];
 
-  const rows = [
-    {
-      id: 1,
-      username: "Jack",
-      avatar: "male1.png",
-      email: "jack@gmail.com",
-      status: "active",
-      transaction: "50.00€",
-    },
-    {
-      id: 2,
-      username: "Jack",
-      avatar: "male1.png",
-      email: "jack@gmail.com",
-      status: "active",
-      transaction: "50.00€",
-    },
-    {
-      id: 3,
-      username: "Jack",
-      avatar: "male1.png",
-      email: "jack@gmail.com",
-      status: "active",
-      transaction: "50.00€",
-    },
-    {
-      id: 4,
-      username: "Jack",
-      avatar: "male1.png",
-      email: "jack@gmail.com",
-      status: "active",
-      transaction: "50.00€",
-    },
-    {
-      id: 5,
-      username: "Jack",
-      avatar: "male1.png",
-      email: "jack@gmail.com",
-      status: "active",
-      transaction: "50.00€",
-    },
-  ];
-  
   return (
     <Container>
       <StyledDataGrid
-        rows={rows}
+        rows={data}
         columns={columns}
-        pageSize={5}
-        rowsPerPageOptions={[5]}
+        pageSize={10}
+        rowsPerPageOptions={[10]}
         checkboxSelection
         disableSelectionOnClick
       />
