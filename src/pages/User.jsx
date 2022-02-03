@@ -5,6 +5,7 @@ import {
   Email,
   LocationOn,
   Cake,
+  Publish,
 } from "@material-ui/icons";
 
 const Container = styled.div`
@@ -126,6 +127,63 @@ const UserUpdate = styled.div`
   border-radius: 10px;
 `;
 
+const UpdateTitle = styled.span`
+  font-size: 24px;
+  font-weight: 600;
+`;
+
+const UpdateForm = styled.form`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+`;
+
+const UpdateLeft = styled.div``;
+
+const UpdateRight = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
+
+const UpdateItem = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+
+  > label {
+    margin-bottom: 5px;
+    font-size: 14px;
+    font-weight: 600;
+  }
+`;
+
+const Input = styled.input`
+  border: none;
+  width: 250px;
+  height: 30px;
+  border-bottom: 1px solid gray;
+
+  &:focus-visible {
+    outline: none;
+  }
+
+  &:focus::placeholder {
+    color: transparent;
+  }
+`;
+
+const UpdateUpload = styled.div``;
+
+const UpdateImage = styled.img`
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+  object-fit: cover;
+  margin-right: 20px;
+`;
+
+
 const User = () => {
   return (
     <Container>
@@ -155,7 +213,7 @@ const User = () => {
             <ShowBotTitle>Contact Details</ShowBotTitle>
             <ShowInfo>
               <LocalPhone style={sIcon} />
-              <ShowInfoTitle>+1 439 986 27</ShowInfoTitle>
+              <ShowInfoTitle>+33 6 12 34 56 78</ShowInfoTitle>
             </ShowInfo>
             <ShowInfo>
               <Email style={sIcon} />
@@ -167,7 +225,49 @@ const User = () => {
             </ShowInfo>
           </ShowBottom>
         </UserShow>
-        <UserUpdate></UserUpdate>
+        <UserUpdate>
+          <UpdateTitle>Edit</UpdateTitle>
+          <UpdateForm>
+            <UpdateLeft>
+              <UpdateItem>
+                <label>Username</label>
+                <Input type="text" placeholder="Jackgudboy"></Input>
+              </UpdateItem>
+              <UpdateItem>
+                <label>Birthday</label>
+                <Input type="text" placeholder="25/01/1989"></Input>
+              </UpdateItem>
+              <UpdateItem>
+                <label>Phone</label>
+                <Input type="text" placeholder="+33 6 12 34 56 78"></Input>
+              </UpdateItem>
+              <UpdateItem>
+                <label>Email</label>
+                <Input type="text" placeholder="jack@gmail.com"></Input>
+              </UpdateItem>
+              <UpdateItem>
+                <label>Addresse</label>
+                <Input type="text" placeholder="Paris | FR"></Input>
+              </UpdateItem>
+            </UpdateLeft>
+            <UpdateRight>
+              <UpdateUpload>
+                <UpdateImage src="../male1.png" alt="" />
+                <label htmlFor="file">
+                  <Publish />
+                </label>
+                <Input
+                  type="file"
+                  id="file"
+                  style={{ display: "none" }}
+                ></Input>
+              </UpdateUpload>
+              <Button>
+                Update
+              </Button>
+            </UpdateRight>
+          </UpdateForm>
+        </UserUpdate>
       </UserContainer>
     </Container>
   );
