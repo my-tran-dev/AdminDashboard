@@ -10,6 +10,7 @@ import {
 } from "react-router-dom";
 import UserList from "./pages/UserList";
 import User from "./pages/User";
+import NewUser from "./pages/NewUser";
 
 const Container = styled.div`
   display: flex;
@@ -30,6 +31,9 @@ function App() {
           </Route>
           <Route path="/user/:userId">
             <User />
+          </Route>
+          <Route path="/newUser">
+            <NewUser />
           </Route>
         </Switch>
       </Container>

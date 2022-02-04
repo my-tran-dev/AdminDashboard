@@ -7,6 +7,7 @@ import {
   Cake,
   Publish,
 } from "@material-ui/icons";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   flex: 5;
@@ -158,6 +159,10 @@ const UpdateItem = styled.div`
   }
 `;
 
+const UpdateIcon = {
+  cursor: "pointer",
+};
+
 const Input = styled.input`
   border: none;
   width: 250px;
@@ -173,23 +178,33 @@ const Input = styled.input`
   }
 `;
 
-const UpdateUpload = styled.div``;
+const UpdateUpload = styled.div`
+  display: flex;
+  align-items: center;
+`;
 
 const UpdateImage = styled.img`
-  width: 100px;
-  height: 100px;
+  width: 200px;
+  height: 200px;
   border-radius: 10px;
   object-fit: cover;
   margin-right: 20px;
 `;
-
 
 const User = () => {
   return (
     <Container>
       <TitleContainer>
         <Title>Edit user</Title>
-        <Button>Create</Button>
+        <Link
+          to="/newUser"
+          style={{
+            textDecoration: "none",
+            color: "white",
+          }}
+        >
+          <Button>Create</Button>
+        </Link>
       </TitleContainer>
       <UserContainer>
         <UserShow>
@@ -246,7 +261,7 @@ const User = () => {
                 <Input type="text" placeholder="jack@gmail.com"></Input>
               </UpdateItem>
               <UpdateItem>
-                <label>Addresse</label>
+                <label>Address</label>
                 <Input type="text" placeholder="Paris | FR"></Input>
               </UpdateItem>
             </UpdateLeft>
@@ -254,7 +269,7 @@ const User = () => {
               <UpdateUpload>
                 <UpdateImage src="../male1.png" alt="" />
                 <label htmlFor="file">
-                  <Publish />
+                  <Publish style={UpdateIcon} />
                 </label>
                 <Input
                   type="file"
@@ -262,9 +277,7 @@ const User = () => {
                   style={{ display: "none" }}
                 ></Input>
               </UpdateUpload>
-              <Button>
-                Update
-              </Button>
+              <Button>Update</Button>
             </UpdateRight>
           </UpdateForm>
         </UserUpdate>
