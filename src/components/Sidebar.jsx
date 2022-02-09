@@ -104,10 +104,12 @@ const Sidebar = () => {
                 Users
               </Item>
             </Link>
-            <Item>
-              <Storefront style={sIcon} />
-              Products
-            </Item>
+            <Link to="/products" style={sLink}>
+              <Item>
+                <Storefront style={sIcon} />
+                Products
+              </Item>
+            </Link>
             <Item>
               <AttachMoney style={sIcon} />
               Transactions

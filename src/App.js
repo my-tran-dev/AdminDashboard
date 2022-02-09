@@ -11,6 +11,8 @@ import {
 import UserList from "./pages/UserList";
 import User from "./pages/User";
 import NewUser from "./pages/NewUser";
+import ProductList from "./pages/ProductList";
+import Product from "./pages/Product";
 
 const Container = styled.div`
   display: flex;
@@ -34,6 +36,12 @@ function App() {
           </Route>
           <Route path="/newUser">
             <NewUser />
+          </Route>
+          <Route path="/products">
+            <ProductList />
+          </Route>
+          <Route path="/product/:productId">
+            <Product />
           </Route>
         </Switch>
       </Container>

@@ -9,8 +9,8 @@ import {
   makeStyles,
 } from "@material-ui/core";
 import { DeleteOutline, EditOutlined, Add, Search } from "@material-ui/icons";
-import { userRows } from "../dummyData";
 import { Link } from "react-router-dom";
+import { productRows } from "../dummyData";
 import { useState } from "react";
 
 const Container = styled.div`
@@ -27,7 +27,7 @@ const SearchBox = styled.div``;
 
 const AddContainer = styled.div``;
 
-const AddNewUser = styled.div`
+const AddNewProduct = styled.div`
   position: absolute;
   right: 20px;
   top: 10px;
@@ -62,7 +62,7 @@ const Button = styled.button`
   }
 `;
 
-const sUser = {
+const sProduct = {
   display: "flex",
   alignItems: "center",
 };
@@ -108,10 +108,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const UserList = () => {
+const ProductList = () => {
   const classes = useStyles();
-  //const dispatch = useDispatch();
-  const [data, setData] = useState(userRows);
+  const [data, setData] = useState(productRows);
   const [searchValue, setSearchValue] = useState("");
   const handleDelete = (id) => {
     setData(data.filter((item) => item.id !== id));
@@ -121,9 +120,9 @@ const UserList = () => {
     //use dispatch to call action
     console.log(searchValue);
     if (!searchValue.length) {
-      setData(userRows);
+      setData(productRows);
     }
-    const newData = userRows.filter((item) => {
+    const newData = productRows.filter((item) => {
       return Object.keys(item).some((key) =>
         item[key].toString().toLowerCase().includes(searchValue.toLowerCase())
       );
@@ -135,32 +134,32 @@ const UserList = () => {
   const columns = [
     { field: "id", headerName: "ID", width: 120 },
     {
-      field: "user",
-      headerName: "User",
-      width: 300,
+      field: "product",
+      headerName: "Product",
+      width: 250,
       renderCell: (params) => {
         return (
-          <div style={sUser}>
-            <img style={sImg} src={params.row.avatar} alt="" />
-            {params.row.username}
+          <div style={sProduct}>
+            <img style={sImg} src={params.row.image} alt="" />
+            {params.row.name}
           </div>
         );
       },
     },
     {
-      field: "email",
-      headerName: "Email",
-      width: 300,
+      field: "description",
+      headerName: "Description",
+      width: 450,
     },
     {
-      field: "status",
-      headerName: "Status",
-      width: 150,
+      field: "stock",
+      headerName: "Stock",
+      width: 120,
     },
     {
-      field: "transaction",
-      headerName: "Transaction Volume",
-      width: 200,
+      field: "price",
+      headerName: "Price",
+      width: 120,
     },
     {
       field: "action",
@@ -170,7 +169,7 @@ const UserList = () => {
         return (
           <>
             <IconButton className={classes.sPos}>
-              <Link to={"/user/" + params.row.id} style={sLink}>
+              <Link to={"/product/" + params.row.id} style={sLink}>
                 <EditOutlined />
               </Link>
             </IconButton>
@@ -210,9 +209,9 @@ const UserList = () => {
           </FormControl>
         </SearchBox>
         <AddContainer>
-          <AddNewUser>
+          <AddNewProduct>
             <Link
-              to="/newUser"
+              to="/newProduct"
               style={{
                 textDecoration: "none",
                 color: "white",
@@ -222,10 +221,9 @@ const UserList = () => {
                 <Add style={{ paddingTop: "5px" }} />
               </Button>
             </Link>
-          </AddNewUser>
+          </AddNewProduct>
         </AddContainer>
       </TopContainer>
-
       <div style={{ height: "calc(100% - 60px)" }}>
         <StyledDataGrid
           rows={data}
@@ -240,4 +238,4 @@ const UserList = () => {
   );
 };
 
-export default UserList;
+export default ProductList;

@@ -25,14 +25,14 @@ const Label = styled.label`
   margin-bottom: 10px;
   font-size: 14px;
   font-weight: 600;
-  color: gray; 
+  color: gray;
 `;
 
 const Input = styled.input`
-height: 20px;
-padding: 10px;
-border: 1px solid gray;
-border-radius: 5px;
+  height: 20px;
+  padding: 10px;
+  border: 1px solid gray;
+  border-radius: 5px;
 `;
 
 const Gender = styled.div`
@@ -40,6 +40,11 @@ const Gender = styled.div`
     margin: 0px 30px 0px 5px;
     font-size: 18px;
     color: gray;
+  }
+
+  > input {
+    margin-top: -3px;
+    vertical-align: middle;
   }
 `;
 
@@ -89,6 +94,39 @@ const IOSSwitch = styled((props) => (
   },
 }));
 
+const Button = styled.button`
+cursor: pointer;
+  border: none;
+  background-image: linear-gradient(
+    to right,
+    #02aab0 0%,
+    #00cdac 51%,
+    #02aab0 100%
+  );
+
+  margin: 10px;
+  padding: 10px 35px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  display: block;
+
+  -webkit-box-shadow: 0px -5px 16px 0px rgba(25, 121, 35, 0.2);
+  box-shadow: 0px -5px 16px 0px rgba(25, 121, 35, 0.2);
+
+  &:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+  };
+  }
+`;
+
 export default function NewUser() {
   return (
     <Container>
@@ -100,10 +138,6 @@ export default function NewUser() {
         </Item>
         <Item>
           <Label>Full Name</Label>
-          <Input type="text" placeholder="" />
-        </Item>
-        <Item>
-          <Label>Birthday</Label>
           <Input type="text" placeholder="" />
         </Item>
         <Item>
@@ -134,12 +168,16 @@ export default function NewUser() {
           </Gender>
         </Item>
         <Item>
-          <Label >Active
-          <FormControlLabel style={{marginLeft: "20px"}}
-            control={<IOSSwitch sx={{ m: 1 }} defaultChecked />}
-          /></Label>
+          <Label>
+            Active
+            <FormControlLabel
+              style={{ marginLeft: "20px" }}
+              control={<IOSSwitch sx={{ m: 1 }} defaultChecked />}
+            />
+          </Label>
         </Item>
       </Form>
+      <Button>Create</Button>
     </Container>
   );
 }
