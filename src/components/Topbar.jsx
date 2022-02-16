@@ -85,7 +85,7 @@ export default function Topbar() {
           <IconButton className={classes.button}>
             <Settings />
           </IconButton>
-          <TopAvatar src="supportmale-512.png" />
+          <TopAvatar src="../supportmale-512.png" />
         </TopRight>
       </Wrapper>
     </Container>

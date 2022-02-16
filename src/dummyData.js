@@ -172,6 +172,57 @@ export const userRows = [
     },
   ];
 
+  export const productData = [
+    {
+      name: "Jan",
+      "Sales": 4000,
+    },
+    {
+      name: "Feb",
+      "Sales": 3000,
+    },
+    {
+      name: "Mar",
+      "Sales": 3890,
+    },
+    {
+      name: 'Apr',
+      "Sales": 2000,
+    },
+    {
+      name: 'May',
+      "Sales": 1500,
+    },
+    {
+      name: 'Jun',
+      "Sales": 3000,
+    },
+    {
+      name: 'Jul',
+      "Sales": 4000,
+    },
+    {
+      name: 'Aug',
+      "Sales": 6000,
+    },
+    {
+      name: 'Sep',
+      "Sales": 2500,
+    },
+    {
+      name: 'Oct',
+      "Sales": 3000,
+    },
+    {
+      name: 'Nov',
+      "Sales": 2000,
+    },
+    {
+      name: 'Dec',
+      "Sales": 3500,
+    },
+  ];
+
   export const productRows = [
     {
       id: 1,

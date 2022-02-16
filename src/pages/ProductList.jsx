@@ -23,15 +23,12 @@ const TopContainer = styled.div`
   margin: 0px 60px;
 `;
 
-const SearchBox = styled.div``;
-
-const AddContainer = styled.div``;
-
 const AddNewProduct = styled.div`
   position: absolute;
-  right: 20px;
+  right: 0px;
   top: 10px;
   z-index: 999;
+  margin-right: inherit;
 `;
 
 const Button = styled.button`
@@ -185,9 +182,6 @@ const ProductList = () => {
   return (
     <Container>
       <TopContainer>
-        <SearchBox>
-          {/* <Search />
-          <SearchInput /> */}
           <FormControl variant="standard">
             <InputLabel htmlFor="search">Search box</InputLabel>
             <Input
@@ -204,11 +198,8 @@ const ProductList = () => {
                     {<Search />}
                   </IconButton>
                 </InputAdornment>
-              }
-            />
+              } />
           </FormControl>
-        </SearchBox>
-        <AddContainer>
           <AddNewProduct>
             <Link
               to="/newProduct"
@@ -222,7 +213,6 @@ const ProductList = () => {
               </Button>
             </Link>
           </AddNewProduct>
-        </AddContainer>
       </TopContainer>
       <div style={{ height: "calc(100% - 60px)" }}>
         <StyledDataGrid

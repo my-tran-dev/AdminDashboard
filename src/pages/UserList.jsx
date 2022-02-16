@@ -23,15 +23,12 @@ const TopContainer = styled.div`
   margin: 0px 60px;
 `;
 
-const SearchBox = styled.div``;
-
-const AddContainer = styled.div``;
-
 const AddNewUser = styled.div`
   position: absolute;
-  right: 20px;
+  right: 0;
   top: 10px;
   z-index: 999;
+  margin-right: inherit; 
 `;
 
 const Button = styled.button`
@@ -186,9 +183,6 @@ const UserList = () => {
   return (
     <Container>
       <TopContainer>
-        <SearchBox>
-          {/* <Search />
-          <SearchInput /> */}
           <FormControl variant="standard">
             <InputLabel htmlFor="search">Search box</InputLabel>
             <Input
@@ -208,8 +202,6 @@ const UserList = () => {
               }
             />
           </FormControl>
-        </SearchBox>
-        <AddContainer>
           <AddNewUser>
             <Link
               to="/newUser"
@@ -223,7 +215,6 @@ const UserList = () => {
               </Button>
             </Link>
           </AddNewUser>
-        </AddContainer>
       </TopContainer>
 
       <div style={{ height: "calc(100% - 60px)" }}>

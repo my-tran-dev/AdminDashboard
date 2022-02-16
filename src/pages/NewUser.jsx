@@ -95,7 +95,7 @@ const IOSSwitch = styled((props) => (
 }));
 
 const Button = styled.button`
-cursor: pointer;
+  cursor: pointer;
   border: none;
   background-image: linear-gradient(
     to right,
@@ -124,7 +124,6 @@ cursor: pointer;
     color: #fff;
     text-decoration: none;
   };
-  }
 `;
 
 export default function NewUser() {

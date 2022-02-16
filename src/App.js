@@ -6,13 +6,13 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Redirect,
 } from "react-router-dom";
 import UserList from "./pages/UserList";
 import User from "./pages/User";
 import NewUser from "./pages/NewUser";
 import ProductList from "./pages/ProductList";
 import Product from "./pages/Product";
+import NewProduct from "./pages/NewProduct";
 
 const Container = styled.div`
   display: flex;
@@ -42,6 +42,9 @@ function App() {
           </Route>
           <Route path="/product/:productId">
             <Product />
+          </Route>
+          <Route path="/newProduct">
+            <NewProduct />
           </Route>
         </Switch>
       </Container>
